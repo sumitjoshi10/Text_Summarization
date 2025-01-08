@@ -1,3 +1,3 @@
-from textSummarizer.logger import logger
+from textSummarizer.utils.common import create_directories,read_yaml
+read_yaml("config/config.yaml")
 
-logger.info("This is Text Summarizer Custom Log")
