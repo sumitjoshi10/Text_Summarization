@@ -1,4 +1,5 @@
 from textSummarizer.pipline.stage_01_data_ingestion import DataIngestionPipeline
+from textSummarizer.pipline.stage_02_data_validation import DataValidationPipeline
 
 from textSummarizer.logger import logger
 from textSummarizer.exception import CustomeException
@@ -14,4 +15,13 @@ try:
 except Exception as e:
     raise CustomeException(e,sys)
 
+
+STAGE_NAME = "Data Validation"
+try:
+    logger.info(f">>>>>>>>>>>Stage {STAGE_NAME} started <<<<<<<<<<<<")
+    data_validation = DataValidationPipeline()
+    validation_status = data_validation.main()
+    logger.info(f">>>>>>>>>>>Stage {STAGE_NAME} Completed <<<<<<<<<<<<\n\nX====================X")
+except Exception as e:
+    raise CustomeException(e,sys)
 
