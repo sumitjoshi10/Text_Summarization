@@ -1,5 +1,4 @@
 from textSummarizer.configuration.configuration import ConfigurationManager
-from textSummarizer.entity import DataTransformationConfig
 from textSummarizer.components.data_transformation import DataTransformation
 from textSummarizer.logger import logger
 from textSummarizer.exception import CustomeException
