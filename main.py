@@ -2,6 +2,7 @@ from textSummarizer.pipline.stage_01_data_ingestion import DataIngestionPipeline
 from textSummarizer.pipline.stage_02_data_validation import DataValidationPipeline
 from textSummarizer.pipline.stage_03_data_transformation import DataTransformationPipeline
 from textSummarizer.pipline.stage_04_model_trainer import ModelTrainerPipeline
+from textSummarizer.pipline.stage_05_model_evalutaion import ModelEvalulationPipeline
 
 from textSummarizer.logger import logger
 from textSummarizer.exception import CustomeException
@@ -42,6 +43,16 @@ try:
     logger.info(f">>>>>>>>>>>Stage {STAGE_NAME} started <<<<<<<<<<<<")
     model_trainer = ModelTrainerPipeline()
     model_trainer.main()
+    logger.info(f">>>>>>>>>>>Stage {STAGE_NAME} Completed <<<<<<<<<<<<\n\nX====================X")
+except Exception as e:
+    raise CustomeException(e,sys)
+
+
+STAGE_NAME = "Model Evaluation"
+try:
+    logger.info(f">>>>>>>>>>>Stage {STAGE_NAME} started <<<<<<<<<<<<")
+    model_evaluation = ModelEvalulationPipeline()
+    model_evaluation.main()
     logger.info(f">>>>>>>>>>>Stage {STAGE_NAME} Completed <<<<<<<<<<<<\n\nX====================X")
 except Exception as e:
     raise CustomeException(e,sys)
